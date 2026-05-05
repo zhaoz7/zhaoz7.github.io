@@ -1504,20 +1504,21 @@
         };
 
         function switchPubTab(lang, tabName) {
+            // 1. 取消所有导航高亮
             const navLinks = document.querySelectorAll(`#${lang}-page .pub-nav a`);
             navLinks.forEach(link => link.classList.remove('active'));
+            
+            // 2. 隐藏所有论文分组
             const groups = document.querySelectorAll(`#${lang}-page .pub-group`);
             groups.forEach(group => group.classList.remove('active'));
 
+            // 3. 激活当前点击的标签 + 对应分组
             const activeLink = document.querySelector(`#${lang}-page .pub-nav a[onclick="switchPubTab('${lang}', '${tabName}')"]`);
             if (activeLink) activeLink.classList.add('active');
 
-            if (tabName === 'all') {
-                groups.forEach(group => group.classList.add('active'));
-            } else {
-                const activeGroup = document.getElementById(`${lang}-${tabName}`);
-                if (activeGroup) activeGroup.classList.add('active');
-            }
+            // 🔥 核心修复：只显示当前选中的那一个分组，不再全部叠加
+            const activeGroup = document.getElementById(`${lang}-${tabName}`);
+            if (activeGroup) activeGroup.classList.add('active');
         }
 
         // 初始化视频控制功能
