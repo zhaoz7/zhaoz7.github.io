@@ -6,18 +6,17 @@
     <title>Ziqi-Zhao</title>
     <style>
         .nav {
-            background: #fff;
-            position: absolute;
-            top: 6px;
-            right: 10px;
-            padding: 0 10px;
-            text-align: right;
-            z-index: 999; 
+            position: fixed; /* 固定在屏幕右上角，不跟随页面滚动 */
+            top: 20px;
+            right: 30px;
+            z-index: 9999; /* 最高层级，不会被遮挡 */
+            background: transparent; /* 透明背景，不影响页面 */
+            padding: 0;
         }
         .nav button {
             padding: 6px 12px;
             margin: 0 5px;
-            font-size: 14px;
+            font-size: 20px;
             cursor: pointer;
             border: none;
             background: #fff;
@@ -35,7 +34,7 @@
         .page {
             display: none;
             padding: 20px;
-            max-width: 1100px;
+            max-width: 1500px;
             margin: 0 auto;
             padding-top: 20px;
         }
@@ -45,14 +44,14 @@
             background-color: #fff; }
 
         html {
-            background-color: #f5f5f5;
+            background-color: #fff;
             min-height: 100%;
             box-sizing: border-box;
             padding: 0;
             margin: 0;
         }
         * {
-            font-family: "Times New Roman", Times, serif !important;
+            font-family: Arial, sans-serif !important;
             font-feature-settings: normal;
             -webkit-font-smoothing: antialiased;
             box-sizing: inherit;
@@ -60,7 +59,7 @@
             padding: 0;
         }
         body {
-            max-width: 1100px;
+            max-width: 1500px;
             margin: 1rem auto;
             padding: 20px 40px;
             color: #333;
@@ -88,21 +87,25 @@
             margin-bottom: 0.8rem;
         }
         .english-name, .chinese-name {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             margin: 0;
             font-weight: bold;
             line-height: 1;
         }
         .chinese-name {
-            font-family: "SimSun", "宋体", serif !important;
+            font-family: Arial, sans-serif !important;
         }
         .english-name {
             font-family: "Times New Roman", Times, serif !important;
         }
         .info p {
             margin: 0.3rem 0;
-            font-size: 1.15rem;
+            font-size: 1.5rem;
             line-height: 1.6;
+        }
+        .info p strong {
+            font-size: inherit !important;
+            font-weight: 600;
         }
         .info a {
             color: #0066cc;
@@ -116,8 +119,8 @@
             margin-right: 60px; 
         }
         .avatar img {
-            width: 220px;
-            height: 280px;
+            width: 300px;
+            height: 340px;
             object-fit: cover;
             border-radius: 4px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -126,20 +129,20 @@
             margin: 2rem 0;
         }
         .section h2 {
-            font-size: 1.3rem;
+            font-size: 1.7rem;
             margin: 1rem 0 0.8rem 0;
             border-bottom: 2px solid #ddd;
             padding-bottom: 0.3rem;
             font-weight: bold;
         }
         .research-section p {
-            margin: 0.4rem 0;
+            margin: 1.5rem 0;
             font-size: 1.05rem !important;
             line-height: 1.4;
         }
         .research-item {
-            margin-bottom: 0.6rem;
-            font-size: 1.0rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
             line-height: 1.4;
         }
         .research-item strong {
@@ -151,11 +154,11 @@
             width: 0.8rem;
         }
         .intro-section p {
-            font-size: 1.05rem !important;
+            font-size: 1.5rem !important;
             line-height: 1.5;
         }
         .section p {
-            font-size: 0.95rem;
+            font-size: 1.5rem;
             margin-bottom: 0.8rem;
             line-height: 1.5;
             text-align: justify;
@@ -269,10 +272,10 @@
         .modal-title {
             font-weight: bold;
             margin-bottom: 10px;
-            font-size: 1.1rem;
+            font-size: 1.5rem;
         }
         .modal-content {
-            font-size: 0.95rem;
+            font-size: 1.4rem;
             line-height: 1.5;
         }
         .close-btn {
@@ -281,10 +284,11 @@
             background: #f0f0f0;
             border: 1px solid #ddd;
             cursor: pointer;
+            font-size: 1.4rem;
         }
         .education-item {
             margin-bottom: 0.6rem;
-            font-size: 1.0rem;
+            font-size: 1.5rem;
             line-height: 1.4;
             display: flex;
             align-items: flex-start;
@@ -327,7 +331,7 @@
             border-radius: 4px;
         }
         .demo-scroller::-webkit-scrollbar-track {
-            background-color: #f5f5f5;
+            background-color: #fff;
             border-radius: 4px;
         }
         .video-card {
@@ -483,13 +487,6 @@
                 min-height: calc(100vh - 3rem);
             }
 
-            .nav {
-                position: relative;
-                top: 0;
-                right: 0;
-                margin-bottom: 20px;
-                text-align: center;
-            }
             .page {
                 padding-top: 20px;
             }
@@ -501,6 +498,38 @@
                 height: 150px; /* 移动端容器高度 */
             }
         }
+
+        .section p { font-size: 1.5rem !important; }
+    .pub-content { font-size: 1.5rem !important; }
+    .pub-title { font-size: 1.5rem !important; }
+    .news-item { font-size: 1.5rem !important; }
+
+    /* 论文分类导航样式 */
+.pub-nav {
+    margin: 1rem 0;
+    font-size: 1.7rem;
+}
+.pub-nav .label {
+    font-weight: 500;
+    margin-right: 0.5rem;
+}
+.pub-nav a {
+    color: #003366; /* 默认深蓝色 */
+    text-decoration: none;
+    margin: 0 0.3rem;
+    cursor: pointer;
+}
+.pub-nav a.active {
+    color: #d00; /* 选中红色 */
+    font-weight: bold;
+}
+.pub-group {
+    display: none;
+}
+.pub-group.active {
+    display: block;
+}
+
     </style>
 </head>
 <body>
@@ -513,14 +542,14 @@
         <div class="header">
             <div class="info">
                 <div class="name-container">
-                    <h1 class="chinese-name">赵子琪</h1>
+                    <h1 class="chinese-name">赵子琪（Ziqi Zhao）</h1>
                 </div>
                 <p><strong>南京信息工程大学博士研究生</strong></p>
                 <p>时空预测</p>
                 <p>多模态融合</p>
                 <p>计算机视觉</p>
-                <p>Email: ziqi.zhao.ch@gamil.com</p>
-                <p>[<a href="https://scholar.google.com">Google Scholar</a>][<a href="https://github.com/zqzhaolab">GitHub</a>]</p>
+                <p>Email: zhaozq_ch@163.com/ziqi.zhao.ch@gamil.com</p>
+                <p>[<a href="https://scholar.google.com/citations?view_op=list_works&hl=zh-CN&user=xFNA-FkAAAAJ&gmla=AIqSsVs8CkEtS1VC-tnk7YeiX-CoNVS52LrDWNiBUXJ__BaTP752I_e9yaofHan4OAjJsk78LKiRmwUz8sR9lXePQRwvIc1pX5smlzuQfMkUN0gg-IW1Hg">Google Scholar</a>][<a href="https://github.com/zhaoz7">GitHub</a>]</p>
             </div>
             <div class="avatar">
                 <img data-img-path="imgs/profile.jpg" alt="profile">
@@ -578,111 +607,145 @@
         </div>
 
         <div class="section">
-            <h2>论文</h2>
-            <!-- paper8 -->
-            <div class="publication-item">
-                <div class="pub-image">
-                    <img data-img-path="imgs/paper8.jpg" alt="Cover of Paper 8">
-                </div>
-                <div class="pub-content">
-                    <p class="pub-title">MissPred: A Robust Two-Stage Radar Echo Extrapolation Algorithm in Missing Pattern</p>
-                    <p class="pub-authors"><strong>Ziqi Zhao</strong>, Chunxu Duan, Lin Song, Qilin Zhang, Wenda Zhu, Yi Liu</p>
-                    <p class="pub-venue">Remote Sensing （中科院二区）, 2025</p>
-                    <p class="pub-links">[<a href="https://www.mdpi.com/2072-4292/17/12/2066">论文主页</a>]</p>
-                </div>
-            </div>
+    <h2>论文</h2>
+    <!-- 研究方向导航 -->
+    <div class="pub-nav">
+        <span class="label">研究方向：</span>
+        <a onclick="switchPubTab('zh', 'cv')" class="active">计算机视觉</a> / 
+        <a onclick="switchPubTab('zh', 'convection')">强对流预测</a> / 
+        <a onclick="switchPubTab('zh', 'traffic')">智慧交通</a>
+    </div>
 
-            <!-- paper7 -->
-            <div class="publication-item">
-                <div class="pub-image">
-                    <img data-img-path="imgs/paper7.jpg" alt="Cover of Paper 7">
-                </div>
-                <div class="pub-content">
-                    <p class="pub-title">RaDiT: A Differential Transformer-Based Hybrid Deep Learning Model for Radar Echo Extrapolation</p>
-                    <p class="pub-authors">Wenda Zhu, Zhenyu Lu, Yuan Zhang, <strong>Ziqi Zhao</strong>, Bingjian Lu, Ruiyi Li</p>
-                    <p class="pub-venue">Remote Sensing （中科院二区）, 2025</p>
-                    <p class="pub-links">[<a href="https://www.mdpi.com/2072-4292/17/12/1976">论文主页</a>]</p>
-                </div>
+    <!-- 1. 计算机视觉-->
+    <div class="pub-group active" id="zh-cv">
+        <!-- paper8 -->
+        <div class="publication-item">
+            <div class="pub-image">
+                <img data-img-path="imgs/paper8.jpg" alt="Cover of Paper 8">
             </div>
-
-            <!-- paper6 -->
-            <div class="publication-item">
-                <div class="pub-image">
-                    <img data-img-path="imgs/paper6.jpg" alt="Cover of Paper 6">
-                </div>
-                <div class="pub-content">
-                    <p class="pub-title">基于多尺度残差网络的闪电类型识别</p>
-                    <p class="pub-authors">杨俊，刘岩，李杰，<strong>赵子琪</strong>，郑猛，张其林</p>
-                    <p class="pub-venue">科学技术与工程 （北大核心，EI）, 2025</p>
-                    <p class="pub-links">[<a href="#">论文主页</a>]</p>
-                </div>
-            </div>
-
-            <!-- paper5 -->
-            <div class="publication-item">
-                <div class="pub-image">
-                    <img data-img-path="imgs/paper5.jpg" alt="Cover of Paper 5">
-                </div>
-                <div class="pub-content">
-                    <p class="pub-title">基于图自编码器和GRU网络的分层交通流预测模型</p>
-                    <p class="pub-authors"><strong>赵子琪</strong>，杨斌，张远广</p>
-                    <p class="pub-venue">计算机科学（北大核心）, 2024</p>
-                    <p class="pub-links">[<a href="#">论文主页</a>]</p>
-                </div>
-            </div>
-
-            <!-- paper4 -->
-            <div class="publication-item">
-                <div class="pub-image">
-                    <img data-img-path="imgs/paper4.jpg" alt="Cover of Paper 4">
-                </div>
-                <div class="pub-content">
-                    <p class="pub-title">Sensing Intrusion Detection for Automatic Driving System based on Scene Semantic Centroid</p>
-                    <p class="pub-authors"><strong>Ziqi Zhao</strong>, Bin Yang, Hongfeng Shu, Qi Liu, Kangshuai Zhang, Lei Peng</p>
-                    <p class="pub-venue">IEEE 25th International Conference on Intelligent Transportation Systems （智能交通领域顶级会议/清华大学A类会议）, 2022</p>
-                    <p class="pub-links">[<a href="https://ieeexplore.ieee.org/abstract/document/9922532/">论文主页</a>]</p>
-                </div>
-            </div>
-
-            <!-- paper3 -->
-            <div class="publication-item">
-                <div class="pub-image">
-                    <img data-img-path="imgs/paper3.jpg" alt="Cover of Paper 3">
-                </div>
-                <div class="pub-content">
-                    <p class="pub-title">Scene Semantic Anomaly Detection of Multi-Sensor in Autonomous Driving</p>
-                    <p class="pub-authors"><strong>Ziqi Zhao</strong>, Bin Yang, Chuisheng Qian, Yuanguang Zhang</p>
-                    <p class="pub-venue">IEEE 1st International Symposium on Sensor Technology and Control （EI）, 2022</p>
-                    <p class="pub-links">[<a href="https://iopscience.iop.org/article/10.1088/1742-6596/2302/1/012005/meta">论文主页</a>]</p>
-                </div>
-            </div>
-
-            <!-- paper2 -->
-            <div class="publication-item">
-                <div class="pub-image">
-                    <img data-img-path="imgs/paper2.jpg" alt="Cover of Paper 2">
-                </div>
-                <div class="pub-content">
-                    <p class="pub-title">A Hierarchical Optimal Path Planning Algorithm for Collaborative Air-Ground Inspection</p>
-                    <p class="pub-authors">Yuanguang Zhang, Yuhong Zhao, <strong>Ziqi Zhao</strong>, Weiqi Tang</p>
-                    <p class="pub-venue">International Conference on Smart Transportation and City Engineering （EI）, 2022</p>
-                    <p class="pub-links">[<a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/12460/124603I/A-hierarchical-optimal-path-planning-algorithm-for-collaborative-air-ground/10.1117/12.2658244.short">论文主页</a>]</p>
-                </div>
-            </div>
-            
-            <!-- paper1 -->
-            <div class="publication-item">
-                <div class="pub-image">
-                    <img data-img-path="imgs/paper1.jpg" alt="Cover of Paper 1">
-                </div>
-                <div class="pub-content">
-                    <p class="pub-title">Security Analysis of SM2 Signature Algorithm Based on Fault Attack</p>
-                    <p class="pub-authors">Chuisheng Qian, Yan Wang, Minghua Wang, <strong>Ziqi Zhao</strong></p>
-                    <p class="pub-venue">International Symposium on Computer Technology and Information Science （EI）, 2022</p>
-                    <p class="pub-links">[<a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/12474/1247402/Security-analysis-of-SM2-signature-algorithm-based-on-fault-attack/10.1117/12.2653740.short">论文主页</a>]</p>
-                </div>
+            <div class="pub-content">
+                <p class="pub-title">MissPred: A Robust Two-Stage Radar Echo Extrapolation Algorithm in Missing Pattern</p>
+                <p class="pub-authors"><strong>Ziqi Zhao</strong>, Chunxu Duan, Lin Song, Qilin Zhang, Wenda Zhu, Yi Liu</p>
+                <p class="pub-venue">Remote Sensing （中科院二区）, 2025</p>
+                <p class="pub-links">[<a href="https://www.mdpi.com/2072-4292/17/12/2066">论文主页</a>]</p>
             </div>
         </div>
+        <!-- paper7 -->
+        <div class="publication-item">
+            <div class="pub-image">
+                <img data-img-path="imgs/paper7.jpg" alt="Cover of Paper 7">
+            </div>
+            <div class="pub-content">
+                <p class="pub-title">RaDiT: A Differential Transformer-Based Hybrid Deep Learning Model for Radar Echo Extrapolation</p>
+                <p class="pub-authors">Wenda Zhu, Zhenyu Lu, Yuan Zhang, <strong>Ziqi Zhao</strong>, Bingjian Lu, Ruiyi Li</p>
+                <p class="pub-venue">Remote Sensing （中科院二区）, 2025</p>
+                <p class="pub-links">[<a href="https://www.mdpi.com/2072-4292/17/12/1976">论文主页</a>]</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. 强对流预测 -->
+    <div class="pub-group" id="zh-convection">
+        <div class="publication-item">
+            <div class="pub-image">
+                <img data-img-path="imgs/paper6.jpg" alt="Cover of Paper 6">
+            </div>
+            <div class="pub-content">
+                <p class="pub-title">基于多尺度残差网络的闪电类型识别</p>
+                <p class="pub-authors">杨俊，刘岩，李杰，<strong>赵子琪</strong>，郑猛，张其林</p>
+                <p class="pub-venue">科学技术与工程 （北大核心，EI）, 2025</p>
+                <p class="pub-links">[<a href="#">论文主页</a>]</p>
+            </div>
+        </div>
+        <div class="publication-item">
+            <div class="pub-image">
+                <img data-img-path="imgs/paper8.jpg" alt="Cover of Paper 8">
+            </div>
+            <div class="pub-content">
+                <p class="pub-title">MissPred: A Robust Two-Stage Radar Echo Extrapolation Algorithm in Missing Pattern</p>
+                <p class="pub-authors"><strong>Ziqi Zhao</strong>, Chunxu Duan, Lin Song, Qilin Zhang, Wenda Zhu, Yi Liu</p>
+                <p class="pub-venue">Remote Sensing （中科院二区）, 2025</p>
+                <p class="pub-links">[<a href="https://www.mdpi.com/2072-4292/17/12/2066">论文主页</a>]</p>
+            </div>
+        </div>
+        <!-- 复制paper7 -->
+        <div class="publication-item">
+            <div class="pub-image">
+                <img data-img-path="imgs/paper7.jpg" alt="Cover of Paper 7">
+            </div>
+            <div class="pub-content">
+                <p class="pub-title">RaDiT: A Differential Transformer-Based Hybrid Deep Learning Model for Radar Echo Extrapolation</p>
+                <p class="pub-authors">Wenda Zhu, Zhenyu Lu, Yuan Zhang, <strong>Ziqi Zhao</strong>, Bingjian Lu, Ruiyi Li</p>
+                <p class="pub-venue">Remote Sensing （中科院二区）, 2025</p>
+                <p class="pub-links">[<a href="https://www.mdpi.com/2072-4292/17/12/1976">论文主页</a>]</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. 智慧交通-->
+    <div class="pub-group" id="zh-traffic">
+        <!-- 复制paper4 -->
+                <div class="publication-item">
+            <div class="pub-image">
+                <img data-img-path="imgs/paper5.jpg" alt="Cover of Paper 5">
+            </div>
+            <div class="pub-content">
+                <p class="pub-title">基于图自编码器和GRU网络的分层交通流预测模型</p>
+                <p class="pub-authors"><strong>赵子琪</strong>，杨斌，张远广</p>
+                <p class="pub-venue">计算机科学（北大核心）, 2024</p>
+                <p class="pub-links">[<a href="#">论文主页</a>]</p>
+            </div>
+        </div>
+        <!-- paper4 -->
+        <div class="publication-item">
+            <div class="pub-image">
+                <img data-img-path="imgs/paper4.jpg" alt="Cover of Paper 4">
+            </div>
+            <div class="pub-content">
+                <p class="pub-title">Sensing Intrusion Detection for Automatic Driving System based on Scene Semantic Centroid</p>
+                <p class="pub-authors"><strong>Ziqi Zhao</strong>, Bin Yang, Hongfeng Shu, Qi Liu, Kangshuai Zhang, Lei Peng</p>
+                <p class="pub-venue">IEEE 25th International Conference on Intelligent Transportation Systems （智能交通领域顶级会议）, 2022</p>
+                <p class="pub-links">[<a href="https://ieeexplore.ieee.org/abstract/document/9922532/">论文主页</a>]</p>
+            </div>
+        </div>
+        <!-- paper3 -->
+        <div class="publication-item">
+            <div class="pub-image">
+                <img data-img-path="imgs/paper3.jpg" alt="Cover of Paper 3">
+            </div>
+            <div class="pub-content">
+                <p class="pub-title">Scene Semantic Anomaly Detection of Multi-Sensor in Autonomous Driving</p>
+                <p class="pub-authors"><strong>Ziqi Zhao</strong>, Bin Yang, Chuisheng Qian, Yuanguang Zhang</p>
+                <p class="pub-venue">IEEE 1st International Symposium on Sensor Technology and Control （EI）, 2022</p>
+                <p class="pub-links">[<a href="https://iopscience.iop.org/article/10.1088/1742-6596/2302/1/012005/meta">论文主页</a>]</p>
+            </div>
+        </div>
+        <!-- paper2 -->
+        <div class="publication-item">
+            <div class="pub-image">
+                <img data-img-path="imgs/paper2.jpg" alt="Cover of Paper 2">
+            </div>
+            <div class="pub-content">
+                <p class="pub-title">A Hierarchical Optimal Path Planning Algorithm for Collaborative Air-Ground Inspection</p>
+                <p class="pub-authors">Yuanguang Zhang, Yuhong Zhao, <strong>Ziqi Zhao</strong>, Weiqi Tang</p>
+                <p class="pub-venue">International Conference on Smart Transportation and City Engineering （EI）, 2022</p>
+                <p class="pub-links">[<a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/12460/124603I/A-hierarchical-optimal-path-planning-algorithm-for-collaborative-air-ground/10.1117/12.2658244.short">论文主页</a>]</p>
+            </div>
+        </div>
+        <!-- paper1 -->
+        <div class="publication-item">
+            <div class="pub-image">
+                <img data-img-path="imgs/paper1.jpg" alt="Cover of Paper 1">
+            </div>
+            <div class="pub-content">
+                <p class="pub-title">Security Analysis of SM2 Signature Algorithm Based on Fault Attack</p>
+                <p class="pub-authors">Chuisheng Qian, Yan Wang, Minghua Wang, <strong>Ziqi Zhao</strong></p>
+                <p class="pub-venue">International Symposium on Computer Technology and Information Science （EI）, 2022</p>
+                <p class="pub-links">[<a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/12474/1247402/Security-analysis-of-SM2-signature-algorithm-based-on-fault-attack/10.1117/12.2653740.short">论文主页</a>]</p>
+            </div>
+        </div>
+    </div>
+</div>
 
         <!-- 中文版演示栏目 -->
         <div class="section">
@@ -734,7 +797,7 @@
 
         <div class="section">
             <h2>专利</h2>
-            <div style="font-size: 0.95rem; line-height: 1.5;">
+            <div style="font-size: 1.5rem; line-height: 1.6;">
                 <div style="margin: 0.4rem 0; display: flex; align-items: flex-start;">
                     <span style="color: #000; display: inline-block; width: 0.8rem; margin-right: 0.4rem;">■</span>
                     <span>一种基于麦克风阵列的雷声信号高效识别方法和系统（CN202511097674.2）  发明人：王彪; 张其林; 段春旭; <strong>赵子琪</strong>; 严玉龙; 潘兴可</span>
@@ -752,7 +815,7 @@
 
         <div class="section">
             <h2>荣誉奖项</h2>
-            <div style="font-size: 0.95rem; line-height: 1.5;">
+            <div style="font-size: 1.5rem; line-height: 1.6;">
                 <div style="margin: 0.4rem 0; display: flex; align-items: flex-start;">
                     <span style="color: #000; display: inline-block; width: 0.8rem; margin-right: 0.4rem;">■</span>
                     <span>南京信息工程大学博士研究生国家奖学金</span>
@@ -769,8 +832,8 @@
         </div>
 
         <div class="section">
-            <h2>学术服务</h2>
-            <div style="font-size: 0.95rem; line-height: 1.5;">
+            <h2>学术兼职</h2>
+            <div style="font-size: 1.5rem; line-height: 1.6;">
                 <div style="margin: 0.4rem 0; display: flex; align-items: flex-start;">
                     <span style="color: #000; display: inline-block; width: 0.8rem; margin-right: 0.4rem;">■</span>
                     <span>Atmospheric Research 期刊审稿人</span>
@@ -806,8 +869,8 @@
                 <p>Spatio-Temporal Prediction</p>
                 <p>Computer Vision</p>
                 <p>Multimodal Fusion</p>
-                <p>Email: ziqi.zhao.ch@gamil.com</p>
-                <p>[<a href="https://scholar.google.com">Google Scholar</a>][<a href="https://github.com/zqzhaolab">GitHub</a>]</p>
+                <p>Email: ziqi.zhao.ch@gamil.com/zhaozq_ch@163.com</p>
+                <p>[<a href="https://scholar.google.com/citations?view_op=list_works&hl=zh-CN&user=xFNA-FkAAAAJ&gmla=AIqSsVs8CkEtS1VC-tnk7YeiX-CoNVS52LrDWNiBUXJ__BaTP752I_e9yaofHan4OAjJsk78LKiRmwUz8sR9lXePQRwvIc1pX5smlzuQfMkUN0gg-IW1Hg">Google Scholar</a>][<a href="https://github.com/zhaoz7">GitHub</a>]</p>
             </div>
             <div class="avatar">
                 <img data-img-path="imgs/profile.jpg" alt="profile">
@@ -865,111 +928,144 @@
         </div>
 
         <div class="section">
-            <h2>Publications</h2>
-            <!-- paper8 -->
-            <div class="publication-item">
-                <div class="pub-image">
-                    <img data-img-path="imgs/paper8.jpg" alt="Cover of Paper 8">
-                </div>
-                <div class="pub-content">
-                    <p class="pub-title">MissPred: A Robust Two-Stage Radar Echo Extrapolation Algorithm in Missing Pattern</p>
-                    <p class="pub-authors"><strong>Ziqi Zhao</strong>, Chunxu Duan, Lin Song, Qilin Zhang, Wenda Zhu, Yi Liu</p>
-                    <p class="pub-venue">Remote Sensing (JCR Q2), 2025</p>
-                    <p class="pub-links">[<a href="https://www.mdpi.com/2072-4292/17/12/2066">Paper Webpage</a>]</p>
-                </div>
-            </div>
+    <h2>Publications</h2>
+    <!-- 研究方向导航 -->
+    <div class="pub-nav">
+        <span class="label">Research Topics:</span>
+        <a onclick="switchPubTab('en', 'cv')" class="active">Computer Vision</a> / 
+        <a onclick="switchPubTab('en', 'convection')">Severe Convection Prediction</a> / 
+        <a onclick="switchPubTab('en', 'traffic')">Intelligent Transportation</a>
+    </div>
 
-            <!-- paper7 -->
-            <div class="publication-item">
-                <div class="pub-image">
-                    <img data-img-path="imgs/paper7.jpg" alt="Cover of Paper 7">
-                </div>
-                <div class="pub-content">
-                    <p class="pub-title">RaDiT: A Differential Transformer-Based Hybrid Deep Learning Model for Radar Echo Extrapolation</p>
-                    <p class="pub-authors">Wenda Zhu, Zhenyu Lu, Yuan Zhang, <strong>Ziqi Zhao</strong>, Bingjian Lu, Ruiyi Li</p>
-                    <p class="pub-venue">Remote Sensing (JCR Q2), 2025</p>
-                    <p class="pub-links">[<a href="https://www.mdpi.com/2072-4292/17/12/1976">Paper Webpage</a>]</p>
-                </div>
+    <!-- 1. 计算机视觉 -->
+    <div class="pub-group active" id="en-cv">
+        <!-- paper8 -->
+        <div class="publication-item">
+            <div class="pub-image">
+                <img data-img-path="imgs/paper8.jpg" alt="Cover of Paper 8">
             </div>
-
-            <!-- paper6 -->
-            <div class="publication-item">
-                <div class="pub-image">
-                    <img data-img-path="imgs/paper6.jpg" alt="Cover of Paper 6">
-                </div>
-                <div class="pub-content">
-                    <p class="pub-title">Lightning type recognition based on multi-scale residual networks</p>
-                    <p class="pub-authors">Yang Jun, Liu Yan, Li Jie, <strong>Ziqi Zhao</strong>, Meng Zheng, Qilin Zhang</p>
-                    <p class="pub-venue">Science Technology and Engineering (EI), 2025</p>
-                    <p class="pub-links">[<a href="#">Paper Webpage</a>]</p>
-                </div>
-            </div>
-
-            <!-- paper5 -->
-            <div class="publication-item">
-                <div class="pub-image">
-                    <img data-img-path="imgs/paper5.jpg" alt="Cover of Paper 5">
-                </div>
-                <div class="pub-content">
-                    <p class="pub-title">Hierarchical Traffic Flow Prediction Model Based on Graph Autoencoder and GRU Network</p>
-                    <p class="pub-authors"><strong>Ziqi Zhao</strong>, Bin Yang, Yuanguang Zhang</p>
-                    <p class="pub-venue">Computer Science, 2024</p>
-                    <p class="pub-links">[<a href="#">Paper Webpage</a>]</p>
-                </div>
-            </div>
-
-            <!-- paper4 -->
-            <div class="publication-item">
-                <div class="pub-image">
-                    <img data-img-path="imgs/paper4.jpg" alt="Cover of Paper 4">
-                </div>
-                <div class="pub-content">
-                    <p class="pub-title">Sensing Intrusion Detection for Automatic Driving System based on Scene Semantic Centroid</p>
-                    <p class="pub-authors"><strong>Ziqi Zhao</strong>, Bin Yang, Hongfeng Shu, Qi Liu, Kangshuai Zhang, Lei Peng</p>
-                    <p class="pub-venue">IEEE 25th International Conference on Intelligent Transportation Systems (Top Conference in Intelligent Transportation), 2022</p>
-                    <p class="pub-links">[<a href="https://ieeexplore.ieee.org/abstract/document/9922532/">Paper Webpage</a>]</p>
-                </div>
-            </div>
-
-            <!-- paper3 -->
-            <div class="publication-item">
-                <div class="pub-image">
-                    <img data-img-path="imgs/paper3.jpg" alt="Cover of Paper 3">
-                </div>
-                <div class="pub-content">
-                    <p class="pub-title">Scene Semantic Anomaly Detection of Multi-Sensor in Autonomous Driving</p>
-                    <p class="pub-authors"><strong>Ziqi Zhao</strong>, Bin Yang, Chuisheng Qian, Yuanguang Zhang</p>
-                    <p class="pub-venue">IEEE 1st International Symposium on Sensor Technology and Control (EI), 2022</p>
-                    <p class="pub-links">[<a href="https://iopscience.iop.org/article/10.1088/1742-6596/2302/1/012005/meta">Paper Webpage</a>]</p>
-                </div>
-            </div>
-
-            <!-- paper2 -->
-            <div class="publication-item">
-                <div class="pub-image">
-                    <img data-img-path="imgs/paper2.jpg" alt="Cover of Paper 2">
-                </div>
-                <div class="pub-content">
-                    <p class="pub-title">A Hierarchical Optimal Path Planning Algorithm for Collaborative Air-Ground Inspection</p>
-                    <p class="pub-authors">Yuanguang Zhang, Yuhong Zhao, <strong>Ziqi Zhao</strong>, Weiqi Tang</p>
-                    <p class="pub-venue">International Conference on Smart Transportation and City Engineering (EI), 2022</p>
-                    <p class="pub-links">[<a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/12460/124603I/A-hierarchical-optimal-path-planning-algorithm-for-collaborative-air-ground/10.1117/12.2658244.short">Paper Webpage</a>]</p>
-                </div>
-            </div>
-            
-            <!-- paper1 -->
-            <div class="publication-item">
-                <div class="pub-image">
-                    <img data-img-path="imgs/paper1.jpg" alt="Cover of Paper 1">
-                </div>
-                <div class="pub-content">
-                    <p class="pub-title">Security Analysis of SM2 Signature Algorithm Based on Fault Attack</p>
-                    <p class="pub-authors">Chuisheng Qian, Yan Wang, Minghua Wang, <strong>Ziqi Zhao</strong></p>
-                    <p class="pub-venue">International Symposium on Computer Technology and Information Science (EI), 2022</p>
-                    <p class="pub-links">[<a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/12474/1247402/Security-analysis-of-SM2-signature-algorithm-based-on-fault-attack/10.1117/12.2653740.short">Paper Webpage</a>]</p>
-                </div>
+            <div class="pub-content">
+                <p class="pub-title">MissPred: A Robust Two-Stage Radar Echo Extrapolation Algorithm in Missing Pattern</p>
+                <p class="pub-authors"><strong>Ziqi Zhao</strong>, Chunxu Duan, Lin Song, Qilin Zhang, Wenda Zhu, Yi Liu</p>
+                <p class="pub-venue">Remote Sensing (JCR Q2), 2025</p>
+                <p class="pub-links">[<a href="https://www.mdpi.com/2072-4292/17/12/2066">Paper Webpage</a>]</p>
             </div>
         </div>
+        <!-- paper7 -->
+        <div class="publication-item">
+            <div class="pub-image">
+                <img data-img-path="imgs/paper7.jpg" alt="Cover of Paper 7">
+            </div>
+            <div class="pub-content">
+                <p class="pub-title">RaDiT: A Differential Transformer-Based Hybrid Deep Learning Model for Radar Echo Extrapolation</p>
+                <p class="pub-authors">Wenda Zhu, Zhenyu Lu, Yuan Zhang, <strong>Ziqi Zhao</strong>, Bingjian Lu, Ruiyi Li</p>
+                <p class="pub-venue">Remote Sensing (JCR Q2), 2025</p>
+                <p class="pub-links">[<a href="https://www.mdpi.com/2072-4292/17/12/1976">Paper Webpage</a>]</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. 强对流预测 -->
+    <div class="pub-group" id="en-convection">
+        <div class="publication-item">
+            <div class="pub-image">
+                <img data-img-path="imgs/paper8.jpg" alt="Cover of Paper 8">
+            </div>
+            <div class="pub-content">
+                <p class="pub-title">MissPred: A Robust Two-Stage Radar Echo Extrapolation Algorithm in Missing Pattern</p>
+                <p class="pub-authors"><strong>Ziqi Zhao</strong>, Chunxu Duan, Lin Song, Qilin Zhang, Wenda Zhu, Yi Liu</p>
+                <p class="pub-venue">Remote Sensing (JCR Q2), 2025</p>
+                <p class="pub-links">[<a href="https://www.mdpi.com/2072-4292/17/12/2066">Paper Webpage</a>]</p>
+            </div>
+        </div>
+        <div class="publication-item">
+            <div class="pub-image">
+                <img data-img-path="imgs/paper7.jpg" alt="Cover of Paper 7">
+            </div>
+            <div class="pub-content">
+                <p class="pub-title">RaDiT: A Differential Transformer-Based Hybrid Deep Learning Model for Radar Echo Extrapolation</p>
+                <p class="pub-authors">Wenda Zhu, Zhenyu Lu, Yuan Zhang, <strong>Ziqi Zhao</strong>, Bingjian Lu, Ruiyi Li</p>
+                <p class="pub-venue">Remote Sensing (JCR Q2), 2025</p>
+                <p class="pub-links">[<a href="https://www.mdpi.com/2072-4292/17/12/1976">Paper Webpage</a>]</p>
+            </div>
+        </div>
+        <div class="publication-item">
+            <div class="pub-image">
+                <img data-img-path="imgs/paper6.jpg" alt="Cover of Paper 6">
+            </div>
+            <div class="pub-content">
+                <p class="pub-title">Lightning type recognition based on multi-scale residual networks</p>
+                <p class="pub-authors">Yang Jun, Liu Yan, Li Jie, <strong>Ziqi Zhao</strong>, Meng Zheng, Qilin Zhang</p>
+                <p class="pub-venue">Science Technology and Engineering (EI), 2025</p>
+                <p class="pub-links">[<a href="#">Paper Webpage</a>]</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. 智慧交通 -->
+    <div class="pub-group" id="en-traffic">
+        <!-- 复制paper4 -->
+        <div class="publication-item">
+            <div class="pub-image">
+                <img data-img-path="imgs/paper5.jpg" alt="Cover of Paper 5">
+            </div>
+            <div class="pub-content">
+                <p class="pub-title">Hierarchical Traffic Flow Prediction Model Based on Graph Autoencoder and GRU Network</p>
+                <p class="pub-authors"><strong>Ziqi Zhao</strong>, Bin Yang, Yuanguang Zhang</p>
+                <p class="pub-venue">Computer Science, 2024</p>
+                <p class="pub-links">[<a href="#">Paper Webpage</a>]</p>
+            </div>
+        </div>
+        <!-- paper4 -->
+        <div class="publication-item">
+            <div class="pub-image">
+                <img data-img-path="imgs/paper4.jpg" alt="Cover of Paper 4">
+            </div>
+            <div class="pub-content">
+                <p class="pub-title">Sensing Intrusion Detection for Automatic Driving System based on Scene Semantic Centroid</p>
+                <p class="pub-authors"><strong>Ziqi Zhao</strong>, Bin Yang, Hongfeng Shu, Qi Liu, Kangshuai Zhang, Lei Peng</p>
+                <p class="pub-venue">IEEE 25th International Conference on Intelligent Transportation Systems (Top Conference in Intelligent Transportation), 2022</p>
+                <p class="pub-links">[<a href="https://ieeexplore.ieee.org/abstract/document/9922532/">Paper Webpage</a>]</p>
+            </div>
+        </div>
+        <!-- paper3 -->
+        <div class="publication-item">
+            <div class="pub-image">
+                <img data-img-path="imgs/paper3.jpg" alt="Cover of Paper 3">
+            </div>
+            <div class="pub-content">
+                <p class="pub-title">Scene Semantic Anomaly Detection of Multi-Sensor in Autonomous Driving</p>
+                <p class="pub-authors"><strong>Ziqi Zhao</strong>, Bin Yang, Chuisheng Qian, Yuanguang Zhang</p>
+                <p class="pub-venue">IEEE 1st International Symposium on Sensor Technology and Control (EI), 2022</p>
+                <p class="pub-links">[<a href="https://iopscience.iop.org/article/10.1088/1742-6596/2302/1/012005/meta">Paper Webpage</a>]</p>
+            </div>
+        </div>
+        <!-- paper2 -->
+        <div class="publication-item">
+            <div class="pub-image">
+                <img data-img-path="imgs/paper2.jpg" alt="Cover of Paper 2">
+            </div>
+            <div class="pub-content">
+                <p class="pub-title">A Hierarchical Optimal Path Planning Algorithm for Collaborative Air-Ground Inspection</p>
+                <p class="pub-authors">Yuanguang Zhang, Yuhong Zhao, <strong>Ziqi Zhao</strong>, Weiqi Tang</p>
+                <p class="pub-venue">International Conference on Smart Transportation and City Engineering (EI), 2022</p>
+                <p class="pub-links">[<a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/12460/124603I/A-hierarchical-optimal-path-planning-algorithm-for-collaborative-air-ground/10.1117/12.2658244.short">Paper Webpage</a>]</p>
+            </div>
+        </div>
+        <!-- paper1 -->
+        <div class="publication-item">
+            <div class="pub-image">
+                <img data-img-path="imgs/paper1.jpg" alt="Cover of Paper 1">
+            </div>
+            <div class="pub-content">
+                <p class="pub-title">Security Analysis of SM2 Signature Algorithm Based on Fault Attack</p>
+                <p class="pub-authors">Chuisheng Qian, Yan Wang, Minghua Wang, <strong>Ziqi Zhao</strong></p>
+                <p class="pub-venue">International Symposium on Computer Technology and Information Science (EI), 2022</p>
+                <p class="pub-links">[<a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/12474/1247402/Security-analysis-of-SM2-signature-algorithm-based-on-fault-attack/10.1117/12.2653740.short">Paper Webpage</a>]</p>
+            </div>
+        </div>
+    </div>
+</div>
 
         <!-- 英文版演示栏目 -->
         <div class="section">
@@ -1075,7 +1171,7 @@
 
         <div class="section">
             <h2>Honors & Awards</h2>
-            <div style="font-size: 0.95rem; line-height: 1.5;">
+            <div style="font-size: 1.5rem; line-height: 1.5;">
                 <div style="margin: 0.4rem 0; display: flex; align-items: flex-start;">
                     <span style="color: #000; display: inline-block; width: 0.8rem; margin-right: 0.4rem;">■</span>
                     <span>National Scholarship for Doctoral Students, Nanjing University of Information Science and Technology</span>
@@ -1093,7 +1189,7 @@
 
         <div class="section">
             <h2>Academic Service</h2>
-            <div style="font-size: 0.95rem; line-height: 1.5;">
+            <div style="font-size: 1.5rem; line-height: 1.5;">
                 <div style="margin: 0.4rem 0; display: flex; align-items: flex-start;">
                     <span style="color: #000; display: inline-block; width: 0.8rem; margin-right: 0.4rem;">■</span>
                     <span>Reviewer for Atmospheric Research</span>
@@ -1204,6 +1300,20 @@
             // 初始化视频控制
             initVideoControls();
         };
+
+        function switchPubTab(lang, tabName) {
+    // 1. 清除所有active状态
+    const navLinks = document.querySelectorAll(`#${lang}-page .pub-nav a`);
+    navLinks.forEach(link => link.classList.remove('active'));
+    const groups = document.querySelectorAll(`#${lang}-page .pub-group`);
+    groups.forEach(group => group.classList.remove('active'));
+
+    // 2. 给当前标签和内容加上active
+    const activeLink = document.querySelector(`#${lang}-page .pub-nav a[onclick="switchPubTab('${lang}', '${tabName}')"]`);
+    const activeGroup = document.getElementById(`${lang}-${tabName}`);
+    if (activeLink) activeLink.classList.add('active');
+    if (activeGroup) activeGroup.classList.add('active');
+}
 
         // 初始化视频控制功能
         function initVideoControls() {
