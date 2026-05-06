@@ -497,6 +497,61 @@
             .video-wrapper {
                 height: 150px; /* 移动端容器高度 */
             }
+            /* 手机端导航修复 */
+            .nav {
+            position: static;
+            text-align: center;
+            margin: 0 auto 20px;
+            }
+            .nav button {
+            font-size: 16px;
+            padding: 4px 8px;
+            }
+
+            /* 全局字体缩小 */
+            .section p,
+            .pub-content,
+            .pub-title,
+            .news-item,
+            .education-item,
+            .research-item {
+            font-size: 16px !important;
+            }
+            .section h2 {
+            font-size: 20px !important;
+            }
+            .name-container h1 {
+            font-size: 24px !important;
+            }
+
+            /* 头像居中缩小 */
+            .avatar {
+            margin: 15px auto 0 !important;
+            text-align: center;
+            }
+            .avatar img {
+            width: 120px !important;
+            height: 160px !important;
+            }
+
+            /* 论文图片自适应 */
+            .pub-image img {
+            width: 100%;
+            height: auto;
+            }
+
+            /* 页面边距 */
+            body {
+            margin: 0;
+            padding: 15px;
+            width: 100%;
+            box-shadow: none;
+            }
+
+            /* 专利/荣誉等行内样式强制适配 */
+            .section div[style*="1.5rem"] {
+            font-size: 16px !important;
+            }
         }
 
         .section p { font-size: 1.5rem !important; }
